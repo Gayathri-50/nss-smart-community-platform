@@ -30,7 +30,7 @@ export default function MissingAlerts() {
   const fetchMissingPersons = async () => {
     setLoading(true)
     try {
-      const response = await axios.get('http://localhost:5000/api/missing')
+      const response = await axios.get('/https://nss-smart-community-platform.onrender.com/api/missing')
       setMissingPersons(response.data.missingPersons || [])
     } catch (error) {
       console.error(error)
@@ -61,7 +61,7 @@ export default function MissingAlerts() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/missing', formData)
+      await axios.post('https://nss-smart-community-platform.onrender.com/api/missing', formData)
       toast.success('Missing person report submitted successfully.')
       setFormData({
         name: '',

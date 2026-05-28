@@ -275,7 +275,7 @@ npm run seed
 # Start the development server
 npm run dev
 ```
-The backend will start at `http://localhost:5000`
+The backend will start at `https://nss-smart-community-platform.onrender.com`
 ---
 3. Frontend Setup
 ```bash
@@ -333,7 +333,7 @@ CLIENT_URL=http://localhost:5173
 ```
 `client/.env`
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=https://nss-smart-community-platform.onrender.com/api
 VITE_CLOUDINARY_UPLOAD_PRESET=nss_platform_preset
 VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
 VITE_GOOGLE_MAPS_API_KEY=your_google_maps_key

@@ -13,7 +13,7 @@ export default function WasteReports() {
   const fetchReports = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('http://localhost:5000/api/waste')
+      const res = await axios.get('https://nss-smart-community-platform.onrender.com/api/waste')
       setWasteReports(res.data.wasteReports || [])
     } catch (err) {
       console.error(err)
@@ -36,7 +36,7 @@ export default function WasteReports() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/waste', formData)
+      await axios.post('https://nss-smart-community-platform.onrender.com/api/waste', formData)
       toast.success('Waste report submitted')
       setFormData({ title: '', location: '', description: '', image: '' })
       fetchReports()

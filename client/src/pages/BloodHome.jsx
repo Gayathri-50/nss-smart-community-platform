@@ -40,7 +40,7 @@ export default function BloodHome() {
 
   const fetchDonors = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/donors')
+      const res = await axios.get('https://nss-smart-community-platform.onrender.com/api/donors')
       setDonors(res.data.donors)
     } catch (error) {
       console.log(error)
@@ -68,7 +68,7 @@ export default function BloodHome() {
     event.preventDefault()
 
     try {
-      await axios.post('http://localhost:5000/api/donors', formData)
+      await axios.post('https://nss-smart-community-platform.onrender.com/api/donors', formData)
       toast.success('Donor registered successfully')
       setFormData({
         name: '',
