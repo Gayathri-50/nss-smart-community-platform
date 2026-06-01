@@ -13,7 +13,7 @@
 
 Integrating Emergency Blood Donor Network, Missing Person Alerts, and Smart Waste Management in one unified system.
 
-[Live Demo](#) • [Report Bug](../../issues) • [Request Feature](../../issues) • [Documentation](#)
+[Live Demo](https://nss-smart-community-platform.vercel.app/contact) • [Report Bug](../../issues) • [Request Feature](../../issues) • [Documentation](#)
 
 </div>
 
@@ -39,7 +39,7 @@ Integrating Emergency Blood Donor Network, Missing Person Alerts, and Smart Wast
 
 ## 🌟 Overview
 
-The **NSS Smart Community Platform** is a full-stack web application designed for National Service Scheme (NSS) volunteers to efficiently coordinate community support activities. It brings together three essential services into one cohesive ecosystem:
+The **NSS Smart Community Platform** is a full-stack web application designed for National Service Scheme (NSS) volunteers to efficiently coordinate community support activities. It brings together three core services: emergency blood donor coordination, missing person alerts, and smart waste management, all powered by real-time notifications and geolocation features.
 
 ### Why This Platform?
 
