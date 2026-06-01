@@ -2,18 +2,18 @@
 
 <div align="center">
 
-![NSS Smart Community Platform](https://img.shields.io/badge/NSS-Smart%20Community%20Platform-orange?style=for-the-badge&logo=react)
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![NSS Smart Community Platform](https://img.shields.io/badge/NSS-Smart%20Community%20Platform-1f2937?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Version](https://img.shields.io/badge/version-1.0.0-3b82f6?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-10b981?style=for-the-badge)
 ![Node](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-13c659?style=for-the-badge&logo=mongodb)
 
 **A production-ready community support platform for NSS volunteers**
 
 Integrating Emergency Blood Donor Network, Missing Person Alerts, and Smart Waste Management in one unified system.
 
-[Live Demo](https://nss-smart-community-platform.vercel.app/contact) • [Report Bug](../../issues) • [Request Feature](../../issues) • [Documentation](#)
+[🌐 Live Demo](https://nss-smart-community-platform.vercel.app) • [🐛 Report Bug](../../issues) • [✨ Request Feature](../../issues) • [📖 Documentation](#)
 
 </div>
 
@@ -39,7 +39,7 @@ Integrating Emergency Blood Donor Network, Missing Person Alerts, and Smart Wast
 
 ## 🌟 Overview
 
-The **NSS Smart Community Platform** is a full-stack web application designed for National Service Scheme (NSS) volunteers to efficiently coordinate community support activities. It brings together three core services: emergency blood donor coordination, missing person alerts, and smart waste management, all powered by real-time notifications and geolocation features.
+The **NSS Smart Community Platform** is a full-stack web application designed for National Service Scheme (NSS) volunteers to efficiently coordinate community support activities. It brings together three critical community services into one unified, intuitive system with enterprise-grade security and analytics.
 
 ### Why This Platform?
 
