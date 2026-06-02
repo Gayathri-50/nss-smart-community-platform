@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import axios from 'axios'
 import {
   LineChart,
   Line,
@@ -25,38 +26,12 @@ import {
   ChartBar,
   Users,
   ClipboardList,
+  Sparkles,
 } from 'lucide-react'
 
-const stats = [
-  {
-    title: 'Blood Requests',
-    value: '324',
-    change: '+12.5%',
-    icon: HeartPulse,
-    accent: 'from-red-500 to-rose-500',
-  },
-  {
-    title: 'Missing Alerts',
-    value: '88',
-    change: '+8.9%',
-    icon: Flag,
-    accent: 'from-amber-500 to-orange-500',
-  },
-  {
-    title: 'Waste Reports',
-    value: '176',
-    change: '-3.2%',
-    icon: ShieldCheck,
-    accent: 'from-emerald-500 to-cyan-500',
-  },
-  {
-    title: 'Active Volunteers',
-    value: '1.9K',
-    change: '+5.4%',
-    icon: Users,
-    accent: 'from-indigo-500 to-violet-500',
-  },
-]
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://nss-smart-community-platform.onrender.com'
 
 const lineData = [
   { name: 'Mon', blood: 32, missing: 14, waste: 45 },
@@ -81,29 +56,6 @@ const pieData = [
   { name: 'Pending', value: 10 },
 ]
 
-const activities = [
-  {
-    time: 'Just now',
-    description: 'Approved a blood donation request in Mysore.',
-    icon: HeartPulse,
-  },
-  {
-    time: '30 mins ago',
-    description: 'New missing alert submitted for Koramangala.',
-    icon: Flag,
-  },
-  {
-    time: '1 hr ago',
-    description: 'Waste cleanup campaign reached 78% completion.',
-    icon: ShieldCheck,
-  },
-  {
-    time: '2 hrs ago',
-    description: 'Volunteer roster updated with 40 new active members.',
-    icon: Users,
-  },
-]
-
 const campaignData = [
   {
     title: 'River Cleanup Drive',
@@ -120,6 +72,126 @@ const campaignData = [
 const COLORS = ['#34d399', '#fbbf24', '#f43f5e']
 
 export default function AdminDashboard() {
+  const [stats, setStats] = useState([
+    {
+      title: 'Blood Requests',
+      value: '0',
+      change: '+0%',
+      icon: HeartPulse,
+      accent: 'from-red-500 to-rose-500',
+    },
+    {
+      title: 'Missing Alerts',
+      value: '0',
+      change: '+0%',
+      icon: Flag,
+      accent: 'from-amber-500 to-orange-500',
+    },
+    {
+      title: 'Waste Reports',
+      value: '0',
+      change: '+0%',
+      icon: ShieldCheck,
+      accent: 'from-emerald-500 to-cyan-500',
+    },
+    {
+      title: 'Active Volunteers',
+      value: '0',
+      change: '+0%',
+      icon: Users,
+      accent: 'from-indigo-500 to-violet-500',
+    },
+  ])
+
+  const [activities, setActivities] = useState([
+    {
+      time: 'Loading...',
+      description: 'Fetching latest updates',
+      icon: HeartPulse,
+    },
+  ])
+
+  // Fetch all dashboard data on component mount
+  useEffect(() => {
+    fetchDashboardData()
+  }, [])
+
+  const fetchDashboardData = async () => {
+    try {
+      // Fetch donors (blood requests)
+      const donorsRes = await axios.get(`${API_BASE_URL}/api/donors`)
+      const donorCount = donorsRes.data.length || 0
+
+      // Fetch missing persons (missing alerts)
+      const missingRes = await axios.get(`${API_BASE_URL}/api/missing`)
+      const missingCount = missingRes.data.length || 0
+
+      // Fetch waste reports
+      const wasteRes = await axios.get(`${API_BASE_URL}/api/waste`)
+      const wasteCount = wasteRes.data.length || 0
+
+      // Fetch users (active volunteers)
+      const usersRes = await axios.get(`${API_BASE_URL}/api/users`)
+      const userCount = usersRes.data.length || 0
+
+      // Update stats with real data
+      setStats((prevStats) => [
+        { ...prevStats[0], value: donorCount.toString() },
+        { ...prevStats[1], value: missingCount.toString() },
+        { ...prevStats[2], value: wasteCount.toString() },
+        { ...prevStats[3], value: userCount.toString() },
+      ])
+
+      // Update activities with recent data
+      const recentActivities = []
+
+      if (donorsRes.data[0]) {
+        recentActivities.push({
+          time: 'Just now',
+          description: `New blood donation request from ${donorsRes.data[0].bloodGroup || 'donor'}`,
+          icon: HeartPulse,
+        })
+      }
+
+      if (missingRes.data[0]) {
+        recentActivities.push({
+          time: '30 mins ago',
+          description: `Missing alert submitted for ${missingRes.data[0].location || 'local area'}`,
+          icon: Flag,
+        })
+      }
+
+      if (wasteRes.data[0]) {
+        recentActivities.push({
+          time: '1 hr ago',
+          description: `Waste report filed from ${wasteRes.data[0].location || 'community'}`,
+          icon: ShieldCheck,
+        })
+      }
+
+      if (usersRes.data[0]) {
+        recentActivities.push({
+          time: '2 hrs ago',
+          description: `New volunteer registered: ${usersRes.data[0].name || 'Anonymous'}`,
+          icon: Users,
+        })
+      }
+
+      if (recentActivities.length > 0) {
+        setActivities(recentActivities)
+      }
+    } catch (error) {
+      console.error('Error fetching dashboard data:', error)
+      setActivities([
+        {
+          time: 'Error',
+          description: 'Failed to fetch data from backend',
+          icon: HeartPulse,
+        },
+      ])
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100 sm:px-6 lg:px-10">
       <div className="mx-auto grid max-w-[1440px] gap-8 xl:grid-cols-[280px_1fr]">
