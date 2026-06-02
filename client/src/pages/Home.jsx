@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   HeartPulse,
@@ -273,12 +274,12 @@ export default function Home() {
                 Join thousands of NSS volunteers using smart workflows to respond faster, support more people, and make every mission count.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <a href="/register" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5">
+                <Link to="/contact" className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-0.5">
                   Join as Volunteer
-                </a>
-                <a href="/contact" className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
+                </Link>
+                <Link to="/contact" className="inline-flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
                   Contact the Team
-                </a>
+                </Link>
               </div>
             </div>
 
