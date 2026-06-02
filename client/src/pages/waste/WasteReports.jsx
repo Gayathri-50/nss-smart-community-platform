@@ -5,6 +5,10 @@ import { motion } from 'framer-motion'
 import { Leaf, UploadCloud, PlusCircle } from 'lucide-react'
 import WasteReportCard from '../../components/waste/WasteReportCard'
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://nss-smart-community-platform.onrender.com'
+
 export default function WasteReports() {
   const [wasteReports, setWasteReports] = useState([])
   const [loading, setLoading] = useState(false)
@@ -13,7 +17,7 @@ export default function WasteReports() {
   const fetchReports = async () => {
     setLoading(true)
     try {
-      const res = await axios.get('https://nss-smart-community-platform.onrender.com/api/waste')
+      const res = await axios.get(`${API_BASE_URL}/api/waste`)
       setWasteReports(res.data.wasteReports || [])
     } catch (err) {
       console.error(err)
@@ -36,7 +40,7 @@ export default function WasteReports() {
     }
 
     try {
-      await axios.post('https://nss-smart-community-platform.onrender.com/api/waste', formData)
+      await axios.post(`${API_BASE_URL}/api/waste`, formData)
       toast.success('Waste report submitted')
       setFormData({ title: '', location: '', description: '', image: '' })
       fetchReports()

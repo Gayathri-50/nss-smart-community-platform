@@ -13,6 +13,10 @@ import {
   Zap,
 } from 'lucide-react'
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://nss-smart-community-platform.onrender.com'
+
 const bloodGroups = [
   'All',
   'A+',
@@ -40,7 +44,7 @@ export default function BloodHome() {
 
   const fetchDonors = async () => {
     try {
-      const res = await axios.get('https://nss-smart-community-platform.onrender.com/api/donors')
+      const res = await axios.get(`${API_BASE_URL}/api/donors`)
       setDonors(res.data.donors)
     } catch (error) {
       console.log(error)
@@ -68,7 +72,7 @@ export default function BloodHome() {
     event.preventDefault()
 
     try {
-      await axios.post('https://nss-smart-community-platform.onrender.com/api/donors', formData)
+      await axios.post(`${API_BASE_URL}/api/donors`, formData)
       toast.success('Donor registered successfully')
       setFormData({
         name: '',

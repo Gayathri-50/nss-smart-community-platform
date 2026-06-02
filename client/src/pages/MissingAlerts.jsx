@@ -12,6 +12,10 @@ import {
   Heart,
 } from 'lucide-react'
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  'https://nss-smart-community-platform.onrender.com'
+
 const genders = ['Male', 'Female', 'Other']
 
 export default function MissingAlerts() {
@@ -30,7 +34,7 @@ export default function MissingAlerts() {
   const fetchMissingPersons = async () => {
     setLoading(true)
     try {
-      const response = await axios.get('https://nss-smart-community-platform.onrender.com/api/missing')
+      const response = await axios.get(`${API_BASE_URL}/api/missing`)
       setMissingPersons(response.data.missingPersons || [])
     } catch (error) {
       console.error(error)
@@ -61,7 +65,7 @@ export default function MissingAlerts() {
     }
 
     try {
-      await axios.post('https://nss-smart-community-platform.onrender.com/api/missing', formData)
+      await axios.post(`${API_BASE_URL}/api/missing`, formData)
       toast.success('Missing person report submitted successfully.')
       setFormData({
         name: '',
